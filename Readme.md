@@ -3,6 +3,7 @@
 ## How to start the app
 
 ```
+ npm i
  cd src
  node app.mjs
 ```
