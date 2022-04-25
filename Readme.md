@@ -2,8 +2,10 @@
 
 ## How to start the app
 
-cd src
-node app.mjs
+```
+ cd src
+ node app.mjs
+```
 
 ## server should be listening on port 3000 by default (change the port number by passing "port" env variable)
 
