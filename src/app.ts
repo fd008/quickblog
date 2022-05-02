@@ -2,6 +2,9 @@ import express from "express";
 import findAllPost from "./controllers/findAllPost";
 import findAPost from "./controllers/findAPost";
 import updateAPost from "./controllers/updateAPost";
+import delAPost from "./controllers/delAPost";
+import findAllComments from "./controllers/findAllComments";
+import createPost from "./controllers/createPost";
 
 const app = express();
 
@@ -10,7 +13,12 @@ app.use(express.urlencoded({extended: true}));
 
 
 app.get("/posts", async (req, res) => {
-    res.json(findAllPost);     
+    res.json(await findAllPost());     
+})
+
+app.post("/posts",async (req,res) => {
+    res.status(201).json(await createPost(req.body));
+
 })
 
 app.get("/posts/:id", async (req, res) => {
@@ -18,7 +26,7 @@ app.get("/posts/:id", async (req, res) => {
 
     if (id) {
 
-        res.json(await findAPost(id));
+        await findAPost(id, res);
     }else{
         res.status(400).json({msg: "Id must not be empty!"});
     }
@@ -33,6 +41,21 @@ app.put("/posts/:id",async (req, res) => {
     }else{
         res.status(400).json({msg: "Id must not be empty!"})
     }
+})
+
+app.delete("/posts/:id",async (req,res) => {
+    const {id} = req.params;
+
+    if(id){
+        res.status(204).json(await delAPost(id))
+    }else{
+        res.status(400).json({msg: "Id must not be empty!"})
+    }
+
+});
+
+app.get("/comments", async (req,res) => {
+    res.json(await findAllComments())
 })
 
 

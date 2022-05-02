@@ -1,4 +1,4 @@
-import prisma from "../prisma";
+import prisma from "../src/prisma";
 
 await prisma.post.create({
     data: {
