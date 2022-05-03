@@ -5,6 +5,7 @@ import updateAPost from "./controllers/updateAPost";
 import delAPost from "./controllers/delAPost";
 import findAllComments from "./controllers/findAllComments";
 import createPost from "./controllers/createPost";
+import createAComment from "./controllers/createAComment";
 
 const app = express();
 
@@ -55,7 +56,12 @@ app.delete("/posts/:id",async (req,res) => {
 });
 
 app.get("/comments", async (req,res) => {
-    res.json(await findAllComments())
+    await findAllComments(res)
+});
+
+app.post("/comments", async (req, res) => {
+    if (req.body) await createAComment(req.body, res)
+    else res.status(400).json({msg: "Not found!"})
 })
 
 

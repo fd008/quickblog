@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest",
+    "test": "npm run predev && vitest",
     "coverage": "vitest run --coverage",
     "predev": "npx vite-node prisma/seed.ts",
     "dev": "npx vite-node src/app.ts"
@@ -29,6 +29,7 @@
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.30",
     "@types/supertest": "^2.0.12",
+    "c8": "^7.11.2",
     "supertest": "^6.2.3",
     "vitest": "^0.10.0"
   }

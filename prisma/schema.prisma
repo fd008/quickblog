@@ -21,6 +21,7 @@ model Post {
 
 model Comment {
   id       Int     @id @default(autoincrement())
+  author   String?
   Post     Post?   @relation(fields: [postId], references: [id])
   postId   Int?    @default(0)
   parentId Int?    @default(0)
