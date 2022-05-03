@@ -22,7 +22,7 @@ localhost:3000/comments/1
 npm run test
 ```
 
-## Coverate
+## coverage
 
 ```
 npm run coverage
